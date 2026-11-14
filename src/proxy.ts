@@ -6,6 +6,10 @@ import { ADMIN_COOKIE, verifySessionToken } from "@/lib/admin-token";
 // bare) and Vercel's *.vercel.app address serve the same pages, which search
 // engines can treat as duplicates; send them permanently to siteConfig.url.
 // Works whichever form siteConfig.url uses.
+//
+// The *.vercel.app redirect only switches on when REDIRECT_TO_DOMAIN=true is
+// set in Vercel. Until the domain's DNS points at Vercel, siteConfig.url is
+// still the OLD site, so redirecting there would hide the new one.
 const CANONICAL_HOST = new URL(siteConfig.url).host;
 const BARE_HOST = CANONICAL_HOST.replace(/^www\./, "");
 const ALIASES = new Set([BARE_HOST, `www.${BARE_HOST}`]);
@@ -13,7 +17,9 @@ ALIASES.delete(CANONICAL_HOST);
 
 export async function proxy(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
-  const isDuplicate = ALIASES.has(host) || host.endsWith(".vercel.app");
+  const isDuplicate =
+    ALIASES.has(host) ||
+    (host.endsWith(".vercel.app") && process.env.REDIRECT_TO_DOMAIN === "true");
 
   if (isDuplicate) {
     const url = request.nextUrl.clone();
