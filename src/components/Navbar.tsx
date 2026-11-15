@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5">
-        <div className="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-6 rounded-[var(--round-bar)] border border-hairline-strong bg-paper/95 py-1.5 pl-3 pr-1.5 shadow-[0_1px_0_rgba(255,255,255,0.7)_inset,0_18px_40px_-18px_rgba(16,33,30,0.55)] lg:bg-paper/85 lg:backdrop-blur-md">
+        <div className="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-6 rounded-[var(--round-bar)] border border-hairline-strong bg-paper/95 py-1.5 pl-3 pr-1.5 shadow-[0_1px_0_rgba(255,255,255,0.7)_inset,0_18px_40px_-18px_rgba(16,33,30,0.55)]">
           <Link
             href="/"
             className="flex min-w-0 shrink items-center"
@@ -110,10 +110,7 @@ export default function Navbar() {
 
       {/* Full-bleed overlay, mounted only while open */}
       {open && (
-        <div
-          ref={overlay}
-          className="warm-wash fixed inset-0 z-40 bg-paper lg:hidden"
-        >
+        <div ref={overlay} className="fixed inset-0 z-40 bg-paper lg:hidden">
           <nav className="flex h-full flex-col justify-center gap-1 px-8">
             {siteConfig.nav.map((item, i) => (
               <Link

@@ -130,7 +130,7 @@ export default function RootLayout({
       lang="en-GB"
       className={cn("h-full antialiased", geist.variable, fraunces.variable)}
     >
-      <body className="grain flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

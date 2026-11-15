@@ -79,7 +79,7 @@ export default function StepStory({
             start: "top top",
             end: () => "+=" + window.innerHeight * (steps.length * 0.45),
             pin: true,
-            scrub: 0.6,
+            scrub: 0.3,
             onUpdate: (self) => {
               gsap.set(fill, { scaleY: self.progress });
               activate(

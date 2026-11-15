@@ -164,8 +164,8 @@ export default function HeroScrollVideo({
             start: "top top",
             end: () => "+=" + window.innerHeight * cut.scrollLength,
             pin: true,
-            // Smoothing keeps the scrub from snapping frame to frame.
-            scrub: 1,
+            // A little smoothing (0.4s) so it never snaps, but stays with your hand.
+            scrub: 0.4,
             invalidateOnRefresh: true,
           },
         });
@@ -203,10 +203,28 @@ export default function HeroScrollVideo({
           const duration = () => (video.duration || 15) - 0.05;
           gsap.set(video, { scale: 1, transformOrigin: DESKTOP.zoomOrigin });
           // Beats 1–2: one steady push-in towards the door.
+          // Seek only when the previous seek has finished: asking the
+          // decoder for a new frame mid-decode is what makes scrubbing lag.
+          const seek = { t: 0 };
+          let wanted = 0;
+          const flush = () => {
+            if (!video.seeking && Math.abs(video.currentTime - wanted) > 0.01) {
+              video.currentTime = wanted;
+            }
+          };
+          video.addEventListener("seeked", flush);
+          cleanups.push(() => video.removeEventListener("seeked", flush));
           tl.fromTo(
-            video,
-            { currentTime: 0 },
-            { currentTime: duration, duration: 0.7 },
+            seek,
+            { t: 0 },
+            {
+              t: duration,
+              duration: 0.7,
+              onUpdate: () => {
+                wanted = seek.t;
+                flush();
+              },
+            },
             0,
           );
           // The pitch clears early, before the camera moves far.
@@ -387,7 +405,7 @@ export default function HeroScrollVideo({
                 </ArrowLink>
                 <a
                   href="/services"
-                  className="inline-flex items-center rounded-full border border-snow/35 bg-night/40 px-5 py-2.5 text-[15px] font-semibold text-snow backdrop-blur-sm transition-colors duration-150 hover:border-glow hover:text-glow"
+                  className="inline-flex items-center rounded-full border border-snow/35 bg-night/55 px-5 py-2.5 text-[15px] font-semibold text-snow transition-colors duration-150 hover:border-glow hover:text-glow"
                 >
                   Our services
                 </a>
