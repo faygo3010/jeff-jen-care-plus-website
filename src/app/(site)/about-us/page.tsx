@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { siteConfig, whoWeHelp, accreditations, promises } from "@/lib/site-config";
+import {
+  siteConfig,
+  whoWeHelp,
+  accreditations,
+  promises,
+} from "@/lib/site-config";
 import Reveal from "@/components/Reveal";
 import CqcWidget from "@/components/CqcWidget";
-import { ArrowLink, PageHeader, PixelTick, SectionHead } from "@/components/ui-bits";
+import {
+  ArrowLink,
+  PageHeader,
+  PixelTick,
+  SectionHead,
+} from "@/components/ui-bits";
 
 export const metadata: Metadata = {
   title: "About us",
@@ -65,9 +75,9 @@ export default function AboutPage() {
               What we do
             </h2>
             <p>
-              We&apos;re registered to care for older people in their own
-              homes, and to supply ad hoc staff to nursing homes for elderly
-              care, dementia and learning disability.
+              We&apos;re registered to care for older people in their own homes,
+              and to supply ad hoc staff to nursing homes for elderly care,
+              dementia and learning disability.
             </p>
             <p>
               Our aim is simple: high-quality care that is safe, consistent and
@@ -94,8 +104,12 @@ export default function AboutPage() {
             {values.map((v) => (
               <div key={v.title} data-reveal-item className="bezel">
                 <div className="bezel-core h-full p-8">
-                  <h3 className="font-display text-3xl text-signal">{v.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-ink/75">{v.body}</p>
+                  <h3 className="font-display text-3xl text-signal">
+                    {v.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink/75">
+                    {v.body}
+                  </p>
                 </div>
               </div>
             ))}
@@ -131,7 +145,9 @@ export default function AboutPage() {
               <div key={c.title} data-reveal-item className="bezel">
                 <div className="bezel-core h-full p-8">
                   <h3 className="font-display text-2xl text-ink">{c.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-ink/75">{c.body}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink/75">
+                    {c.body}
+                  </p>
                 </div>
               </div>
             ))}
@@ -145,29 +161,41 @@ export default function AboutPage() {
           <div className="bezel bezel-dark">
             <div className="bezel-core bezel-core-dark grid gap-10 p-8 sm:p-12 lg:grid-cols-2">
               <div>
-                <p className="font-pixel text-[11px] uppercase text-glow">Registered and accredited</p>
+                <p className="font-pixel text-[11px] uppercase text-glow">
+                  Registered and accredited
+                </p>
                 <ul className="mt-6 space-y-5">
                   {accreditations.map((a) => (
                     <li key={a.name}>
                       <p className="font-display text-xl text-snow">{a.name}</p>
-                      <p className="mt-1 text-[14px] leading-relaxed text-snow/75">{a.detail}</p>
+                      <p className="mt-1 text-[14px] leading-relaxed text-snow/75">
+                        {a.detail}
+                      </p>
                     </li>
                   ))}
                 </ul>
                 <CqcWidget className="mt-6" />
               </div>
               <div>
-                <p className="font-pixel text-[11px] uppercase text-glow">Come and see us</p>
+                <p className="font-pixel text-[11px] uppercase text-glow">
+                  Come and see us
+                </p>
                 <address className="font-display mt-6 text-2xl not-italic leading-snug text-snow">
                   {siteConfig.address.lines.map((l) => (
-                    <span key={l} className="block">{l}</span>
+                    <span key={l} className="block">
+                      {l}
+                    </span>
                   ))}
                 </address>
                 <p className="mt-4 text-[14px] leading-relaxed text-snow/75">
                   {siteConfig.address.directions}. Feel free to walk in.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <ArrowLink href={siteConfig.phoneHref} tone="glow" icon="phone">
+                  <ArrowLink
+                    href={siteConfig.phoneHref}
+                    tone="glow"
+                    icon="phone"
+                  >
                     Call {siteConfig.phone}
                   </ArrowLink>
                   <ArrowLink href={siteConfig.address.mapHref} tone="dark">

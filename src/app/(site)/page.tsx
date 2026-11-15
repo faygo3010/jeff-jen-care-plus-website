@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SwappingText } from "@animate-ui/react/primitives/texts/swapping";
+import PhraseSwap from "@/components/PhraseSwap";
 import Image from "next/image";
 import { Tilt, TiltContent } from "@animate-ui/react/primitives/effects/tilt";
 import {
@@ -51,7 +51,11 @@ export default async function Home() {
       <section className="relative overflow-x-clip px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-36">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-40 top-10 size-[32rem] rounded-full bg-glow/30 blur-3xl"
+          className="pointer-events-none absolute -left-40 top-10 size-[32rem]"
+          style={{
+            background:
+              "radial-gradient(closest-side, color-mix(in oklab, var(--glow) 40%, transparent), transparent)",
+          }}
         />
         <Reveal className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-12 lg:gap-10">
           {/* Animate UI Tilt: the photo leans towards the pointer, the card floats above it */}
@@ -95,8 +99,8 @@ export default async function Home() {
           <div className="pt-6 lg:col-span-6 lg:pl-10 lg:pt-0">
             <h2 className="font-display text-balance text-4xl leading-[1.06] text-ink sm:text-5xl lg:text-[3.4rem]">
               Safe, compassionate and consistent care,{" "}
-              {/* Animate UI SwappingText: letters roll from one phrase to the next */}
-              <SwappingText
+              {/* Rotating phrase: letter-roll on desktop, fade on phones */}
+              <PhraseSwap
                 text={[
                   "in your own home",
                   "from familiar faces",
@@ -294,7 +298,7 @@ export default async function Home() {
             <div className="bezel-core grid gap-10 !bg-ink-soft p-8 sm:p-12 lg:grid-cols-12">
               <div className="lg:col-span-6">
                 <h2 className="font-display text-balance text-4xl leading-[1.08] text-ink">
-                  <SwappingText
+                  <PhraseSwap
                     text={["Nurses", "Care assistants", "Support workers"]}
                     data-cycle={JSON.stringify([
                       "Nurses",
@@ -477,7 +481,7 @@ export default async function Home() {
               <LogoMark size={56} className="mx-auto text-glow" />
               <h2 className="font-display mx-auto mt-8 max-w-2xl text-balance text-4xl leading-[1.08] text-snow sm:text-6xl">
                 Let&apos;s talk about the care{" "}
-                <SwappingText
+                <PhraseSwap
                   text={["you need", "your family needs", "you deserve"]}
                   data-cycle={JSON.stringify([
                     "you need",

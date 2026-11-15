@@ -51,13 +51,18 @@ export default function QuoteForm({
           <span className="flex size-12 items-center justify-center rounded-full bg-signal/15">
             <PixelTick className="mt-0 size-5" />
           </span>
-          <h3 className="font-display mt-6 text-3xl text-ink">Thank you, message received</h3>
+          <h3 className="font-display mt-6 text-3xl text-ink">
+            Thank you, message received
+          </h3>
           <p className="mt-3 max-w-sm text-pretty text-[15px] leading-relaxed text-ink/75">
             We&apos;ll get back to you as soon as we can.
           </p>
           <p className="mt-4 text-[15px] text-ink/75">
             Need us sooner? Call{" "}
-            <a className="font-semibold text-signal" href={siteConfig.phoneHref}>
+            <a
+              className="font-semibold text-signal"
+              href={siteConfig.phoneHref}
+            >
               {siteConfig.phone}
             </a>
             .
@@ -75,19 +80,38 @@ export default function QuoteForm({
             <label htmlFor="name" className={label}>
               Your name
             </label>
-            <input id="name" name="name" type="text" required autoComplete="name" className={field} />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autoComplete="name"
+              className={field}
+            />
           </div>
           <div>
             <label htmlFor="phone" className={label}>
               Phone
             </label>
-            <input id="phone" name="phone" type="tel" autoComplete="tel" className={field} />
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              className={field}
+            />
           </div>
           <div>
             <label htmlFor="email" className={label}>
               Email
             </label>
-            <input id="email" name="email" type="email" autoComplete="email" className={field} />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              className={field}
+            />
           </div>
           <div>
             <label htmlFor="service" className={label}>
@@ -134,9 +158,18 @@ export default function QuoteForm({
         </p>
 
         {/* Honeypot, hidden from people and screen readers alike. */}
-        <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+        >
           <label htmlFor="company">Company</label>
-          <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          <input
+            id="company"
+            name="company"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
         </div>
 
         {state.status === "error" && state.message && (
@@ -153,7 +186,10 @@ export default function QuoteForm({
         <p className="mt-4 text-[13px] leading-relaxed text-ink/70">
           We use these details only to reply to you. We never share them for
           marketing. See our{" "}
-          <Link href="/privacy" className="underline underline-offset-4 hover:text-ink">
+          <Link
+            href="/privacy"
+            className="underline underline-offset-4 hover:text-ink"
+          >
             Privacy Policy
           </Link>
           .

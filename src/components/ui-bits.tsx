@@ -127,8 +127,22 @@ export function PageHeader({
   return (
     <section className="relative overflow-hidden px-4 pt-40 sm:px-6 lg:px-8">
       {/* Soft depth: two blurred colour fields behind the heading */}
-      <div aria-hidden="true" className="pointer-events-none absolute -left-40 -top-40 size-[34rem] rounded-full bg-glow/35 blur-3xl" />
-      <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-20 size-[28rem] rounded-full bg-signal/15 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 -top-40 size-[34rem]"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklab, var(--glow) 45%, transparent), transparent)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 top-20 size-[28rem]"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklab, var(--signal) 25%, transparent), transparent)",
+        }}
+      />
       <div className="relative mx-auto max-w-6xl border-b border-hairline pb-16">
         <h1 className="font-display max-w-3xl text-balance text-5xl leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
           {title}

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { siteConfig, careHomeStaff } from "@/lib/site-config";
 import Reveal from "@/components/Reveal";
 import QuoteForm from "@/components/QuoteForm";
-import { ArrowLink, PageHeader, PixelTick, SectionHead } from "@/components/ui-bits";
+import {
+  ArrowLink,
+  PageHeader,
+  PixelTick,
+  SectionHead,
+} from "@/components/ui-bits";
 
 export const metadata: Metadata = {
   title: "Staffing for care homes",
@@ -42,7 +47,10 @@ export default function CareHomesPage() {
             <SectionHead title="Staff for every shift" />
             <ul className="mt-8 grid gap-3">
               {points.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-[16px] text-ink/80">
+                <li
+                  key={p}
+                  className="flex items-start gap-3 text-[16px] text-ink/80"
+                >
                   <PixelTick />
                   {p}
                 </li>
@@ -54,7 +62,9 @@ export default function CareHomesPage() {
               <div key={s.title} data-reveal-item className="bezel">
                 <div className="bezel-core p-8">
                   <h3 className="font-display text-3xl text-ink">{s.title}</h3>
-                  <p className="mt-2 text-[16px] leading-relaxed text-ink/75">{s.body}</p>
+                  <p className="mt-2 text-[16px] leading-relaxed text-ink/75">
+                    {s.body}
+                  </p>
                 </div>
               </div>
             ))}

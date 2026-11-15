@@ -14,7 +14,11 @@ export const metadata: Metadata = {
 export default async function ContactPage() {
   const { details } = await getContent();
   const rows = [
-    { label: "Main phone", value: siteConfig.phone, href: siteConfig.phoneHref },
+    {
+      label: "Main phone",
+      value: siteConfig.phone,
+      href: siteConfig.phoneHref,
+    },
     { label: "Also", value: siteConfig.phone2, href: siteConfig.phone2Href },
     { label: "Email", value: siteConfig.email, href: siteConfig.emailHref },
   ];
@@ -39,7 +43,9 @@ export default async function ContactPage() {
               <div className="bezel-core divide-y divide-hairline">
                 {rows.map((row) => (
                   <div key={row.label} className="px-7 py-5">
-                    <p className="font-pixel text-[11px] uppercase text-ink/70">{row.label}</p>
+                    <p className="font-pixel text-[11px] uppercase text-ink/70">
+                      {row.label}
+                    </p>
                     <a
                       href={row.href}
                       className="mt-1.5 block break-all text-[17px] font-semibold text-ink transition-colors duration-300 hover:text-signal"
@@ -49,19 +55,27 @@ export default async function ContactPage() {
                   </div>
                 ))}
                 <div className="px-7 py-5">
-                  <p className="font-pixel text-[11px] uppercase text-ink/70">Availability</p>
-                  <p className="mt-1.5 text-[15px] text-ink">{details.hoursShort}</p>
+                  <p className="font-pixel text-[11px] uppercase text-ink/70">
+                    Availability
+                  </p>
+                  <p className="mt-1.5 text-[15px] text-ink">
+                    {details.hoursShort}
+                  </p>
                 </div>
               </div>
             </div>
 
             <div className="bezel mt-4">
               <div className="bezel-core p-7">
-                <p className="font-pixel text-[11px] uppercase text-ink/70">Our office</p>
+                <p className="font-pixel text-[11px] uppercase text-ink/70">
+                  Our office
+                </p>
                 <address className="font-display mt-3 text-xl not-italic leading-snug text-ink">
                   {siteConfig.legalName}
                   {siteConfig.address.lines.map((l) => (
-                    <span key={l} className="block">{l}</span>
+                    <span key={l} className="block">
+                      {l}
+                    </span>
                   ))}
                 </address>
                 <p className="mt-3 text-[14px] leading-relaxed text-ink/75">

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getContent } from "@/lib/content";
 import Reveal from "@/components/Reveal";
-import { ArrowLink, PageHeader, PixelTick, SectionHead } from "@/components/ui-bits";
+import {
+  ArrowLink,
+  PageHeader,
+  PixelTick,
+  SectionHead,
+} from "@/components/ui-bits";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -32,22 +37,38 @@ export default async function ServicesPage() {
       <section className="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <Reveal className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2" stagger>
           {main.map((s) => (
-            <article key={s.slug} id={s.slug} data-reveal-item className="bezel scroll-mt-28">
+            <article
+              key={s.slug}
+              id={s.slug}
+              data-reveal-item
+              className="bezel scroll-mt-28"
+            >
               <div className="bezel-core flex h-full flex-col p-8 sm:p-10">
                 <h2 className="font-display text-3xl text-ink">{s.title}</h2>
-                <p className="mt-2 text-[16px] font-medium text-signal">{s.lede}</p>
-                <p className="mt-4 text-pretty text-[15px] leading-relaxed text-ink/75">{s.description}</p>
+                <p className="mt-2 text-[16px] font-medium text-signal">
+                  {s.lede}
+                </p>
+                <p className="mt-4 text-pretty text-[15px] leading-relaxed text-ink/75">
+                  {s.description}
+                </p>
                 {s.features.length > 0 && (
                   <ul className="mt-6 grid gap-2.5">
                     {s.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-[15px] text-ink/80">
+                      <li
+                        key={f}
+                        className="flex items-start gap-3 text-[15px] text-ink/80"
+                      >
                         <PixelTick />
                         {f}
                       </li>
                     ))}
                   </ul>
                 )}
-                {s.from && <p className="mt-auto pt-6 text-[15px] font-semibold text-ink">{s.from}</p>}
+                {s.from && (
+                  <p className="mt-auto pt-6 text-[15px] font-semibold text-ink">
+                    {s.from}
+                  </p>
+                )}
                 {s.slug === "care-home-staffing" && (
                   <div className="mt-auto pt-6">
                     <ArrowLink href="/care-homes" tone="light">
@@ -66,13 +87,27 @@ export default async function ServicesPage() {
           <Reveal>
             <SectionHead title="Specialist and flexible support" />
           </Reveal>
-          <Reveal className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger>
+          <Reveal
+            className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            stagger
+          >
             {more.map((s) => (
-              <article key={s.slug} id={s.slug} data-reveal-item className="bezel scroll-mt-28">
+              <article
+                key={s.slug}
+                id={s.slug}
+                data-reveal-item
+                className="bezel scroll-mt-28"
+              >
                 <div className="bezel-core flex h-full flex-col p-7">
                   <h3 className="font-display text-2xl text-ink">{s.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-ink/75">{s.lede}</p>
-                  {s.from && <p className="mt-auto pt-5 text-[14px] font-semibold text-signal">{s.from}</p>}
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink/75">
+                    {s.lede}
+                  </p>
+                  {s.from && (
+                    <p className="mt-auto pt-5 text-[14px] font-semibold text-signal">
+                      {s.from}
+                    </p>
+                  )}
                 </div>
               </article>
             ))}

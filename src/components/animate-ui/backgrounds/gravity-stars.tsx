@@ -28,6 +28,10 @@ type GravityStarsProps = {
   starsInteractionType?: StarsInteractionType;
   /** Follow the pointer anywhere in the window (for a background layer that sits behind content). */
   trackWindow?: boolean;
+  /** Site addition: stop animating (e.g. while the hero video covers it). */
+  paused?: boolean;
+  /** Site addition: cap the canvas resolution (lower = cheaper on phones). */
+  maxDpr?: number;
 } & React.ComponentProps<"div">;
 
 type Particle = {
@@ -56,6 +60,8 @@ function GravityStarsBackgroundContent({
   starsInteraction = false,
   starsInteractionType = "bounce",
   trackWindow = false,
+  paused = false,
+  maxDpr = 2,
   ref,
   className,
   children,
@@ -68,11 +74,15 @@ function GravityStarsBackgroundContent({
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const starsRef = React.useRef<Particle[]>([]);
   const mouseRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const maxDprRef = React.useRef(maxDpr);
+  React.useEffect(() => {
+    maxDprRef.current = maxDpr;
+  }, [maxDpr]);
 
   const inView = useInView(containerRef);
   const pageVisible = usePageVisible();
   const reduce = useShouldReduceMotion();
-  const playing = inView && pageVisible && !reduce;
+  const playing = inView && pageVisible && !reduce && !paused;
 
   const options = {
     starsCount,
@@ -182,7 +192,10 @@ function GravityStarsBackgroundContent({
 
     const resize = () => {
       const rect = container.getBoundingClientRect();
-      const nextDpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      const nextDpr = Math.max(
+        1,
+        Math.min(window.devicePixelRatio || 1, maxDprRef.current),
+      );
       const sizeChanged = rect.width !== width || rect.height !== height;
       if (!sizeChanged && nextDpr === dpr && starsRef.current.length > 0)
         return;

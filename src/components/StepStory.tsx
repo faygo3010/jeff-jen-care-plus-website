@@ -134,11 +134,19 @@ export default function StepStory({
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 size-[36rem] rounded-full bg-signal/40 blur-3xl"
+        className="pointer-events-none absolute -right-40 -top-40 size-[36rem]"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklab, var(--signal) 50%, transparent), transparent)",
+        }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-52 -left-40 size-[30rem] rounded-full bg-glow/15 blur-3xl"
+        className="pointer-events-none absolute -bottom-52 -left-40 size-[30rem]"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklab, var(--glow) 25%, transparent), transparent)",
+        }}
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-12 lg:gap-16">

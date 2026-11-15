@@ -4,7 +4,14 @@ import { work as defaultWork, type CaseStudy } from "@/lib/site-config";
 import { MAX_UPLOAD_MB } from "@/lib/uploads";
 import { moveWork, removeWork, saveWork } from "@/app/admin/actions";
 import ConfirmButton from "@/components/admin/ConfirmButton";
-import { Button, Field, Notice, Panel, TextArea, type AdminSearchParams } from "@/components/admin/ui";
+import {
+  Button,
+  Field,
+  Notice,
+  Panel,
+  TextArea,
+  type AdminSearchParams,
+} from "@/components/admin/ui";
 
 function WorkForm({ study }: { study?: CaseStudy }) {
   return (
@@ -12,9 +19,24 @@ function WorkForm({ study }: { study?: CaseStudy }) {
       <input type="hidden" name="originalSlug" value={study?.slug ?? ""} />
       <input type="hidden" name="existingImage" value={study?.image ?? ""} />
       <div className="grid gap-5 sm:grid-cols-3">
-        <Field name="client" title="Title" defaultValue={study?.client} required />
-        <Field name="sector" title="Label" defaultValue={study?.sector} placeholder="Team, News or Training" />
-        <Field name="location" title="Location" defaultValue={study?.location} placeholder="Oxford" />
+        <Field
+          name="client"
+          title="Title"
+          defaultValue={study?.client}
+          required
+        />
+        <Field
+          name="sector"
+          title="Label"
+          defaultValue={study?.sector}
+          placeholder="Team, News or Training"
+        />
+        <Field
+          name="location"
+          title="Location"
+          defaultValue={study?.location}
+          placeholder="Oxford"
+        />
       </div>
       <TextArea
         name="summary"
@@ -31,7 +53,13 @@ function WorkForm({ study }: { study?: CaseStudy }) {
           defaultValue={study?.delivered.join("\n")}
         />
         <div className="grid content-start gap-5">
-          <Field name="url" title="Link (optional)" type="url" defaultValue={study?.url} placeholder="https://" />
+          <Field
+            name="url"
+            title="Link (optional)"
+            type="url"
+            defaultValue={study?.url}
+            placeholder="https://"
+          />
           <Field
             name="image"
             title={study?.image ? "Replace photo" : "Photo"}
@@ -42,13 +70,19 @@ function WorkForm({ study }: { study?: CaseStudy }) {
         </div>
       </div>
       <div>
-        <Button type="submit">{study ? "Save changes" : "Add to Team & news"}</Button>
+        <Button type="submit">
+          {study ? "Save changes" : "Add to Team & news"}
+        </Button>
       </div>
     </form>
   );
 }
 
-export default async function WorkAdminPage({ searchParams }: { searchParams: AdminSearchParams }) {
+export default async function WorkAdminPage({
+  searchParams,
+}: {
+  searchParams: AdminSearchParams;
+}) {
   const { saved, error } = await searchParams;
   const stored = await readStoredContent();
   const list = stored.work ?? defaultWork;
@@ -72,19 +106,27 @@ export default async function WorkAdminPage({ searchParams }: { searchParams: Ad
                 <form action={moveWork}>
                   <input type="hidden" name="slug" value={study.slug} />
                   <input type="hidden" name="dir" value="up" />
-                  <Button tone="quiet" type="submit">Move up</Button>
+                  <Button tone="quiet" type="submit">
+                    Move up
+                  </Button>
                 </form>
               )}
               {i < list.length - 1 && (
                 <form action={moveWork}>
                   <input type="hidden" name="slug" value={study.slug} />
                   <input type="hidden" name="dir" value="down" />
-                  <Button tone="quiet" type="submit">Move down</Button>
+                  <Button tone="quiet" type="submit">
+                    Move down
+                  </Button>
                 </form>
               )}
               <form action={removeWork}>
                 <input type="hidden" name="slug" value={study.slug} />
-                <ConfirmButton question={`Remove ${study.client} from Team & news?`}>Remove</ConfirmButton>
+                <ConfirmButton
+                  question={`Remove ${study.client} from Team & news?`}
+                >
+                  Remove
+                </ConfirmButton>
               </form>
             </div>
           }
@@ -97,7 +139,9 @@ export default async function WorkAdminPage({ searchParams }: { searchParams: Ad
             />
           )}
           <details>
-            <summary className="font-pixel cursor-pointer text-[10px] uppercase text-signal">Edit</summary>
+            <summary className="font-pixel cursor-pointer text-[10px] uppercase text-signal">
+              Edit
+            </summary>
             <div className="mt-5">
               <WorkForm study={study} />
             </div>

@@ -54,7 +54,12 @@ export default function Logo({
         size={size}
         className={cn("shrink-0", tone === "ink" ? "text-signal" : "text-snow")}
       />
-      <span className={cn("font-display min-w-0 overflow-hidden pb-px leading-[1.15]", textClassName)}>
+      <span
+        className={cn(
+          "font-display min-w-0 overflow-hidden pb-px leading-[1.15]",
+          textClassName,
+        )}
+      >
         {siteConfig.shortName}
       </span>
     </span>

@@ -20,7 +20,9 @@ export default function AdminNav() {
           href={l.href}
           className={cn(
             "font-pixel rounded-[var(--round-inner)] px-3 py-2 text-[10px] uppercase transition-colors",
-            pathname === l.href ? "bg-signal/15 text-ink" : "text-ink/70 hover:text-ink",
+            pathname === l.href
+              ? "bg-signal/15 text-ink"
+              : "text-ink/70 hover:text-ink",
           )}
         >
           {l.label}

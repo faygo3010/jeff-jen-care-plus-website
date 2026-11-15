@@ -6,7 +6,11 @@ import StarsBackdrop from "@/components/StarsBackdrop";
 
 // The public site's chrome. The admin panel sits outside this group, so it
 // gets neither the navbar nor the footer.
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function SiteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       {/* Gravity stars behind every page */}

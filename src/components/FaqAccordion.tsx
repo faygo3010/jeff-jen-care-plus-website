@@ -51,12 +51,16 @@ export default function FaqAccordion({
               >
                 {open ? "−" : "+"}
               </span>
-              <span className="font-display text-[18px] md:text-[19px]">{item.question}</span>
+              <span className="font-display text-[18px] md:text-[19px]">
+                {item.question}
+              </span>
               <span
                 aria-hidden="true"
                 className={cn(
                   "absolute right-6 block size-2 border-r-[2.5px] border-t-[2.5px] transition-transform duration-200",
-                  open ? "-rotate-45 border-signal" : "rotate-[135deg] border-ink/60",
+                  open
+                    ? "-rotate-45 border-signal"
+                    : "rotate-[135deg] border-ink/60",
                 )}
               />
             </button>
@@ -66,7 +70,9 @@ export default function FaqAccordion({
               inert={!open}
               className={cn(
                 "grid border-l-[6px] transition-all duration-300 ease-in-out",
-                open ? "grid-rows-[1fr] border-l-signal" : "grid-rows-[0fr] border-l-hairline-strong",
+                open
+                  ? "grid-rows-[1fr] border-l-signal"
+                  : "grid-rows-[0fr] border-l-hairline-strong",
               )}
             >
               <div className="overflow-hidden">

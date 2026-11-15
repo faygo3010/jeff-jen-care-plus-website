@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SwappingText } from "@animate-ui/react/primitives/texts/swapping";
+import PhraseSwap from "@/components/PhraseSwap";
 import { siteConfig } from "@/lib/site-config";
 import Reveal from "@/components/Reveal";
 import QuoteForm from "@/components/QuoteForm";
@@ -46,9 +46,14 @@ export default function CareersPage() {
         title={
           <>
             We&apos;re hiring{" "}
-            <SwappingText
+            <PhraseSwap
               text={["carers", "nurses", "support workers", "care assistants"]}
-              data-cycle={JSON.stringify(["carers", "nurses", "support workers", "care assistants"])}
+              data-cycle={JSON.stringify([
+                "carers",
+                "nurses",
+                "support workers",
+                "care assistants",
+              ])}
               duration={2200}
               className="italic text-signal"
             />

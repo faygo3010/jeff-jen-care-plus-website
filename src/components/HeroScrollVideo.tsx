@@ -288,6 +288,7 @@ export default function HeroScrollVideo({
   return (
     <div
       ref={wrapperRef}
+      data-hero
       className="relative h-[100svh] overflow-hidden bg-night"
     >
       <div className="absolute inset-0 overflow-hidden">
@@ -354,21 +355,24 @@ export default function HeroScrollVideo({
                 </a>
               )}
               <h1 className="font-display mt-5 text-balance text-[2.5rem] leading-[1] text-snow sm:text-6xl lg:mt-6 lg:text-[4.4rem] [@media(max-height:720px)_and_(max-width:1023px)]:mt-0 [@media(max-height:720px)_and_(max-width:1023px)]:text-[2.1rem]">
-                Safe, compassionate care, <br className="hidden sm:block" />
+                Safe, compassionate care,
                 {/* Animate UI TypingText: types each phrase, then rewrites it */}
-                <TypingText
-                  text={["at home", "day or night", "7 days a week"]}
-                  data-cycle={JSON.stringify([
-                    "at home",
-                    "day or night",
-                    "7 days a week",
-                  ])}
-                  loop
-                  holdDelay={2200}
-                  className="italic text-glow"
-                >
-                  <TypingTextCursor className="ml-1 inline-block h-[0.8em] w-[3px] translate-y-[0.08em] rounded-full bg-glow" />
-                </TypingText>
+                {/* Own line, one line tall even when empty, so nothing jumps while typing */}
+                <span className="block min-h-[1em] whitespace-nowrap">
+                  <TypingText
+                    text={["at home", "day or night", "7 days a week"]}
+                    data-cycle={JSON.stringify([
+                      "at home",
+                      "day or night",
+                      "7 days a week",
+                    ])}
+                    loop
+                    holdDelay={2200}
+                    className="italic text-glow"
+                  >
+                    <TypingTextCursor className="ml-[0.06em] inline-block h-[0.82em] w-[0.06em] min-w-[3px] translate-y-[0.1em] rounded-full bg-glow" />
+                  </TypingText>
+                </span>
               </h1>
             </div>
             <div className="lg:col-span-5 lg:pb-2">

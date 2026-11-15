@@ -22,7 +22,9 @@ export function Field({
     <label className={cn("block", className)}>
       <span className={label}>{title}</span>
       <input name={name} className={field} {...props} />
-      {hint && <span className="mt-1.5 block text-[12px] text-ink/70">{hint}</span>}
+      {hint && (
+        <span className="mt-1.5 block text-[12px] text-ink/70">{hint}</span>
+      )}
     </label>
   );
 }
@@ -43,7 +45,9 @@ export function TextArea({
     <label className={cn("block", className)}>
       <span className={label}>{title}</span>
       <textarea name={name} className={field} {...props} />
-      {hint && <span className="mt-1.5 block text-[12px] text-ink/70">{hint}</span>}
+      {hint && (
+        <span className="mt-1.5 block text-[12px] text-ink/70">{hint}</span>
+      )}
     </label>
   );
 }
@@ -59,8 +63,10 @@ export function Button({
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const tones = {
     primary: "bg-signal text-snow hover:bg-ink",
-    quiet: "border-2 border-hairline-strong text-ink/80 hover:border-signal hover:text-ink",
-    danger: "border-2 border-destructive/50 text-ink/80 hover:bg-destructive/20",
+    quiet:
+      "border-2 border-hairline-strong text-ink/80 hover:border-signal hover:text-ink",
+    danger:
+      "border-2 border-destructive/50 text-ink/80 hover:bg-destructive/20",
   };
   return (
     <button
@@ -76,7 +82,15 @@ export function Button({
   );
 }
 
-export function Panel({ title, children, actions }: { title?: string; children: ReactNode; actions?: ReactNode }) {
+export function Panel({
+  title,
+  children,
+  actions,
+}: {
+  title?: string;
+  children: ReactNode;
+  actions?: ReactNode;
+}) {
   return (
     <section className="border-2 border-hairline bg-paper-deep/50 p-5 sm:p-7">
       {(title || actions) && (
@@ -102,14 +116,20 @@ export function Notice({
 }) {
   if (error) {
     return (
-      <p role="alert" className="border-2 border-destructive/60 bg-destructive/10 px-4 py-3 text-[14px] text-ink">
+      <p
+        role="alert"
+        className="border-2 border-destructive/60 bg-destructive/10 px-4 py-3 text-[14px] text-ink"
+      >
         {error}
       </p>
     );
   }
   if (saved) {
     return (
-      <p role="status" className="border-2 border-signal/50 bg-signal/10 px-4 py-3 text-[14px] text-ink">
+      <p
+        role="status"
+        className="border-2 border-signal/50 bg-signal/10 px-4 py-3 text-[14px] text-ink"
+      >
         {message}
       </p>
     );
@@ -117,4 +137,8 @@ export function Notice({
   return null;
 }
 
-export type AdminSearchParams = Promise<{ saved?: string; error?: string; status?: string }>;
+export type AdminSearchParams = Promise<{
+  saved?: string;
+  error?: string;
+  status?: string;
+}>;

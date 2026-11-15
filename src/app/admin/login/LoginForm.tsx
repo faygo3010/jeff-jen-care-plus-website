@@ -5,7 +5,10 @@ import { login, type LoginState } from "@/app/admin/actions";
 import { Button, field, label } from "@/components/admin/ui";
 
 export default function LoginForm() {
-  const [state, action, pending] = useActionState<LoginState, FormData>(login, {});
+  const [state, action, pending] = useActionState<LoginState, FormData>(
+    login,
+    {},
+  );
 
   return (
     <form action={action} className="mt-7 grid gap-5">

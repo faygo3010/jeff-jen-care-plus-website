@@ -4,7 +4,8 @@ import { getContent } from "@/lib/content";
 import Logo from "@/components/Logo";
 import CqcWidget from "@/components/CqcWidget";
 
-const linkClass = "text-[14px] text-snow/75 transition-colors duration-300 hover:text-snow";
+const linkClass =
+  "text-[14px] text-snow/75 transition-colors duration-300 hover:text-snow";
 const headClass = "font-pixel text-[11px] uppercase text-glow";
 
 export default async function Footer() {
@@ -19,7 +20,9 @@ export default async function Footer() {
               {siteConfig.tagline}
             </p>
             <p className="mt-4 max-w-xs text-pretty text-[14px] leading-relaxed text-snow/70">
-              Home care and care staff across {siteConfig.serviceArea.replace("Oxford and across ", "")}, from our office in Cowley, Oxford.
+              Home care and care staff across{" "}
+              {siteConfig.serviceArea.replace("Oxford and across ", "")}, from
+              our office in Cowley, Oxford.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {accreditations.map((a) => (
@@ -68,7 +71,10 @@ export default async function Footer() {
             <p className={headClass}>Get in touch</p>
             <ul className="mt-5 space-y-3 text-[14px] text-snow/75">
               <li>
-                <a href={siteConfig.phoneHref} className="text-lg font-semibold text-snow hover:text-glow">
+                <a
+                  href={siteConfig.phoneHref}
+                  className="text-lg font-semibold text-snow hover:text-glow"
+                >
                   {siteConfig.phone}
                 </a>
               </li>
@@ -78,7 +84,10 @@ export default async function Footer() {
                 </a>
               </li>
               <li>
-                <a href={siteConfig.emailHref} className={`${linkClass} break-all`}>
+                <a
+                  href={siteConfig.emailHref}
+                  className={`${linkClass} break-all`}
+                >
                   {siteConfig.email}
                 </a>
               </li>

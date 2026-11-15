@@ -32,10 +32,15 @@ export default function OfferSection({ offer }: { offer: Offer }) {
 
             <div className="lg:col-span-6">
               <div className="rounded-[1.25rem] border border-snow/15 bg-snow/5 p-6">
-                <p className="font-pixel text-[11px] uppercase text-glow">We&apos;re looking for</p>
+                <p className="font-pixel text-[11px] uppercase text-glow">
+                  We&apos;re looking for
+                </p>
                 <ul className="mt-4 grid gap-3">
                   {offer.included.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[15px] leading-relaxed text-snow/90">
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-[15px] leading-relaxed text-snow/90"
+                    >
                       <PixelTick className="text-glow" />
                       {item}
                     </li>
@@ -43,7 +48,9 @@ export default function OfferSection({ offer }: { offer: Offer }) {
                 </ul>
               </div>
               {offer.terms && (
-                <p className="mt-4 text-[13px] leading-relaxed text-snow/70">{offer.terms}</p>
+                <p className="mt-4 text-[13px] leading-relaxed text-snow/70">
+                  {offer.terms}
+                </p>
               )}
             </div>
           </div>

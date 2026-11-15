@@ -6,7 +6,11 @@ import { logout } from "@/app/admin/actions";
 import { Button } from "@/components/admin/ui";
 import AdminNav from "@/components/admin/AdminNav";
 
-export default async function PanelLayout({ children }: { children: React.ReactNode }) {
+export default async function PanelLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   await requireAdmin();
 
   return (
@@ -37,8 +41,9 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       <main className="mx-auto grid w-full max-w-5xl flex-1 content-start gap-6 px-4 py-8 sm:px-6 sm:py-10">
         {!storeConnected && (
           <p className="border-2 border-destructive/60 bg-destructive/10 px-4 py-3 text-[14px] text-ink">
-            Storage isn&apos;t connected, so nothing can be saved yet. In Vercel, open the project →
-            Storage → add <strong>Upstash for Redis</strong> (free plan), then redeploy.
+            Storage isn&apos;t connected, so nothing can be saved yet. In
+            Vercel, open the project → Storage → add{" "}
+            <strong>Upstash for Redis</strong> (free plan), then redeploy.
           </p>
         )}
         {children}

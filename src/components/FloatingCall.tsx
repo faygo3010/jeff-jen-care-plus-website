@@ -10,7 +10,13 @@ export default function FloatingCall() {
       aria-label={`Call ${siteConfig.phone}`}
       className="call-fab fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-signal text-snow shadow-[0_12px_28px_-10px_rgba(16,33,30,0.7)] transition-transform duration-200 hover:scale-105 active:scale-95 lg:hidden"
     >
-      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 32 32"
+        fill="none"
+        aria-hidden="true"
+      >
         <path
           stroke="currentColor"
           strokeWidth="2"

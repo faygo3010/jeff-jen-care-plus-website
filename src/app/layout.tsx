@@ -103,7 +103,14 @@ const jsonLd = {
         addressCountry: "GB",
       },
       areaServed: { "@type": "AdministrativeArea", name: "Oxfordshire" },
-      knowsAbout: ["Home care", "Dementia care", "Elderly care", "Care home staffing", "Learning disability support", "Mental health support"],
+      knowsAbout: [
+        "Home care",
+        "Dementia care",
+        "Elderly care",
+        "Care home staffing",
+        "Learning disability support",
+        "Mental health support",
+      ],
     },
   ],
 };
@@ -121,11 +128,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={cn(
-        "h-full antialiased",
-        geist.variable,
-        fraunces.variable,
-      )}
+      className={cn("h-full antialiased", geist.variable, fraunces.variable)}
     >
       <body className="grain flex min-h-full flex-col">
         <script

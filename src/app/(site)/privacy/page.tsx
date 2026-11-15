@@ -26,8 +26,8 @@ export default function PrivacyPage() {
           <Section title="Who we are">
             <p>
               {siteConfig.legalName} (&ldquo;we&rdquo;, &ldquo;us&rdquo;) is the
-              data controller for personal data collected through this
-              website. Questions about this policy go to{" "}
+              data controller for personal data collected through this website.
+              Questions about this policy go to{" "}
               <a className={linkClass} href={siteConfig.emailHref}>
                 {siteConfig.email}
               </a>
@@ -38,8 +38,8 @@ export default function PrivacyPage() {
           <Section title="What we collect">
             <p>
               When you send an enquiry, we collect what you choose to give us:
-              your name, phone number and/or email address, what your enquiry
-              is about, and anything you write in the message. Please don&apos;t
+              your name, phone number and/or email address, what your enquiry is
+              about, and anything you write in the message. Please don&apos;t
               include detailed health information in the form; we&apos;ll talk
               about care needs with you directly.
             </p>
@@ -59,8 +59,8 @@ export default function PrivacyPage() {
             <p>
               Website enquiries are deleted after {privacy.retentionEnquiries}{" "}
               unless they lead to a care arrangement or job application, which
-              are then kept under our care records and recruitment policies.
-              Job applications that don&apos;t lead to employment are kept for{" "}
+              are then kept under our care records and recruitment policies. Job
+              applications that don&apos;t lead to employment are kept for{" "}
               {privacy.retentionApplicants}.
             </p>
           </Section>
