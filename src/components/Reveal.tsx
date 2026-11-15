@@ -17,9 +17,8 @@ type RevealProps = {
 };
 
 /**
- * Scroll-entry reveal. A short rise that moves in visible steps, so elements
- * snap in like sprites on a pixel grid. Transform/opacity only, nothing
- * that triggers layout.
+ * Scroll-entry reveal: a short, smooth rise and fade. Transform/opacity
+ * only, nothing that triggers layout.
  */
 export default function Reveal({
   children,
@@ -51,15 +50,18 @@ export default function Reveal({
 
         gsap.fromTo(
           targets,
-          { y: 24, opacity: 0 },
+          { y: 32, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.5,
+            duration: 0.9,
             delay,
-            // Stepped, like a sprite snapping into place on a pixel grid.
-            ease: "steps(5)",
-            stagger: stagger ? 0.07 : 0,
+            // Smooth glide that eases to a soft stop. Transform and opacity
+            // only, so the browser can animate it without repainting.
+            ease: "power3.out",
+            force3D: true,
+            stagger: stagger ? 0.08 : 0,
+            clearProps: "transform,willChange",
             scrollTrigger: {
               trigger: scope.current,
               start: "top 85%",
