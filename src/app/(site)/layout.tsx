@@ -9,13 +9,16 @@ import StarsBackdrop from "@/components/StarsBackdrop";
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      {/* Gravity stars behind every page */}
+      <StarsBackdrop />
       <ScrollProgressBar />
       <Navbar />
-      <main className="flex-1">{children}</main>
-      <Footer />
+      {/* Content sits above the stars layer (z-0) */}
+      <main className="relative z-10 flex-1">{children}</main>
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <FloatingCall />
-      {/* Gravity stars over every page and section */}
-      <StarsBackdrop />
     </>
   );
 }
