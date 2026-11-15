@@ -1,5 +1,5 @@
 // Team & news photo uploads. Live: Vercel Blob (Vercel → Storage → Blob sets
-// BLOB_READ_WRITE_TOKEN). Local dev without it: public/uploads/ (gitignored).
+// BLOB_READ_WRITE_TOKEN), public or private store. Local dev without it: public/uploads/ (gitignored).
 import fs from "node:fs/promises";
 import path from "node:path";
 import { put } from "@vercel/blob";
@@ -10,6 +10,8 @@ const TYPES: Record<string, string> = {
   "image/webp": "webp",
 };
 export const MAX_UPLOAD_MB = 4;
+/** Every uploaded photo lives under this Blob folder (the photo route only serves these). */
+export const PHOTO_FOLDER = "work";
 
 export async function saveImage(file: File, name: string): Promise<string> {
   const ext = TYPES[file.type];
@@ -20,12 +22,27 @@ export async function saveImage(file: File, name: string): Promise<string> {
   const safe = name.toLowerCase().replace(/[^a-z0-9-]+/g, "-").slice(0, 40) || "image";
 
   if (process.env.BLOB_READ_WRITE_TOKEN) {
-    const blob = await put(`work/${safe}.${ext}`, file, {
-      access: "public",
-      addRandomSuffix: true,
-      contentType: file.type,
-    });
-    return blob.url;
+    const pathname = `${PHOTO_FOLDER}/${safe}.${ext}`;
+    try {
+      // Public store: the photo gets its own public URL.
+      const blob = await put(pathname, file, {
+        access: "public",
+        addRandomSuffix: true,
+        contentType: file.type,
+      });
+      return blob.url;
+    } catch (err) {
+      // Private store (Vercel's default for new Blob stores): save it
+      // privately and show it through /api/photo, which reads it with the
+      // store's token. Anything else is a real error.
+      if (!/private/i.test(err instanceof Error ? err.message : String(err))) throw err;
+      const blob = await put(pathname, file, {
+        access: "private",
+        addRandomSuffix: true,
+        contentType: file.type,
+      });
+      return `/api/photo/${blob.pathname}`;
+    }
   }
 
   if (process.env.NODE_ENV !== "production") {
